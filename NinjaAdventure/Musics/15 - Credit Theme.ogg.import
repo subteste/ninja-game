@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cql3w4c7knj3q"
+path="res://.godot/imported/15 - Credit Theme.ogg-2030ec6e460e6d533501d68f59c5ac58.oggvorbisstr"
+
+[deps]
+
+source_file="res://NinjaAdventure/Musics/15 - Credit Theme.ogg"
+dest_files=["res://.godot/imported/15 - Credit Theme.ogg-2030ec6e460e6d533501d68f59c5ac58.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
