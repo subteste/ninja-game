@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds8x8h3dml8hg"]
+[gd_scene load_steps=10 format=3 uid="uid://ds8x8h3dml8hg"]
 
 [ext_resource type="Texture2D" uid="uid://b333xutp3gfck" path="res://NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="1_fu456"]
 [ext_resource type="Texture2D" uid="uid://d0d24pai737w0" path="res://NinjaAdventure/Backgrounds/Tilesets/TilesetNature.png" id="2_8t8w3"]
 [ext_resource type="PackedScene" uid="uid://c175anle3xmwi" path="res://Scenes/Actors/player.tscn" id="3_k2icx"]
 [ext_resource type="Texture2D" uid="uid://cfr717jyjxww" path="res://NinjaAdventure/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="3_uio40"]
+[ext_resource type="Script" path="res://Scenes/World/PlayerCam.gd" id="5_8fd28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bexax"]
 texture = ExtResource("1_fu456")
@@ -2118,3 +2119,12 @@ layer_1/tile_data = PackedInt32Array(393231, 131073, 0, 589841, 131073, 0, 65557
 
 [node name="Player" parent="." instance=ExtResource("3_k2icx")]
 position = Vector2(175, 114)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../PlayerCam")
+
+[node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
+position = Vector2(175, 114)
+limit_left = 0
+script = ExtResource("5_8fd28")
+tilemap = NodePath("../TileMap")
