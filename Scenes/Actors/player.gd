@@ -12,7 +12,6 @@ func get_input():
 
 # Update the sprite animation and set its x position to 1 every time it stops.
 func update_animation():
-	var frame = $Sprite2D.get_frame_coords().x
 	if velocity.length() == 0:
 		if animation.is_playing():
 			animation.stop()

@@ -2126,5 +2126,6 @@ remote_path = NodePath("../../PlayerCam")
 [node name="PlayerCam" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
 position = Vector2(175, 114)
 limit_left = 0
+limit_top = 0
 script = ExtResource("5_8fd28")
 tilemap = NodePath("../TileMap")
