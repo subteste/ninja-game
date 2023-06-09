@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c175anle3xmwi"]
+[gd_scene load_steps=11 format=3 uid="uid://c175anle3xmwi"]
 
 [ext_resource type="Texture2D" uid="uid://0smp7hljnsel" path="res://NinjaAdventure/Actor/Characters/BlueNinja/SpriteSheet.png" id="1_ehj75"]
 [ext_resource type="Script" path="res://Scenes/Actors/player.gd" id="1_q8m14"]
@@ -98,8 +98,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_inlc0"]
 size = Vector2(11, 12)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ga5jp"]
+radius = 6.0
+height = 12.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_q8m14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_8g5kv")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -107,11 +117,15 @@ texture = ExtResource("1_ehj75")
 hframes = 4
 vframes = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_8g5kv")
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_inlc0")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_ga5jp")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 100
-@onready var animation = $Sprite2D/AnimationPlayer
+@onready var animation = $AnimationPlayer
 
 func _ready():
 	$Sprite2D.set_frame_coords(Vector2i(0, 0))
@@ -10,7 +10,6 @@ func get_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 
-# Update the sprite animation and set its x position to 1 every time it stops.
 func update_animation():
 	if velocity.length() == 0:
 		if animation.is_playing():
@@ -22,10 +21,13 @@ func update_animation():
 		elif velocity.x < 0: walk = 'Left'
 		animation.play('walk' + walk)
 
-# Main loop of the player node.
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 	update_animation()
 
 
+
+func _on_hurt_box_area_entered(area):
+	if area.name == "HitBox":
+		print(area.get_parent().name, " has minus 1 life.")
