@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 class_name Player
 
+signal healthChanged
+
 @export var speed: float = 100
 @onready var animation = $AnimationPlayer
 
 @export var maxHearts: int = 3
-@onready var currentHealth: int = maxHearts
+@onready var currentHealth: int = maxHearts * 4
 
 
 func _ready():
@@ -35,7 +37,6 @@ func _physics_process(_delta):
 
 
 func _on_hurt_box_area_entered(area):
-	if area.name == "HitBox":
+	if area.get_parent().is_in_group("Slime"):
 		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHearts
+		healthChanged.emit(currentHealth)

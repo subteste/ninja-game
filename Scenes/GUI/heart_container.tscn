@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvf7sjlcimu3n"]
+[gd_scene load_steps=3 format=3 uid="uid://dvf7sjlcimu3n"]
 
+[ext_resource type="Script" path="res://Scenes/GUI/heart_container.gd" id="1_h3s22"]
 [ext_resource type="Texture2D" uid="uid://60hua1ljoph" path="res://NinjaAdventure/HUD/Heart.png" id="1_y6new"]
 
 [node name="HeartContainer" type="Panel"]
@@ -7,6 +8,7 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 13)
 offset_right = 16.0
 offset_bottom = 13.0
+script = ExtResource("1_h3s22")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)

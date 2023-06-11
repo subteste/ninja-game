@@ -9,6 +9,8 @@ var startPosition
 @onready var animation = $AnimationPlayer
 
 func _ready():
+	add_to_group("Slime")
+	
 	startPosition = position
 	endPosition = endPoint.global_position
 

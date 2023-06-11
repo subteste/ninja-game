@@ -2811,7 +2811,6 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_k2icx")]
 position = Vector2(175, 114)
-maxHearts = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../PlayerCam")
@@ -2841,8 +2840,4 @@ position = Vector2(44, 91)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BoxHeartContainer" parent="CanvasLayer" instance=ExtResource("8_b162a")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
 script = ExtResource("9_40xie")
