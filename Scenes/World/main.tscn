@@ -2811,6 +2811,8 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_k2icx")]
 position = Vector2(175, 114)
+knockbackPower = 800
+speed = 65.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../PlayerCam")
@@ -2819,6 +2821,9 @@ remote_path = NodePath("../../PlayerCam")
 position = Vector2(175, 114)
 limit_left = 0
 limit_top = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 script = ExtResource("5_8fd28")
 tilemap = NodePath("../TileMap")
 

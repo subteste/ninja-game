@@ -20,7 +20,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/HitBoxCollisionShape:position")
+tracks/1/path = NodePath("SlimeHitBox/HitBoxCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,7 +49,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/HitBoxCollisionShape:position")
+tracks/1/path = NodePath("SlimeHitBox/HitBoxCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -78,7 +78,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/HitBoxCollisionShape:position")
+tracks/1/path = NodePath("SlimeHitBox/HitBoxCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -107,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/HitBoxCollisionShape:position")
+tracks/1/path = NodePath("SlimeHitBox/HitBoxCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -136,7 +136,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/HitBoxCollisionShape:position")
+tracks/1/path = NodePath("SlimeHitBox/HitBoxCollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -183,10 +183,10 @@ visible = false
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_egygk")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="SlimeHitBox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
-[node name="HitBoxCollisionShape" type="CollisionShape2D" parent="HitBox"]
+[node name="HitBoxCollisionShape" type="CollisionShape2D" parent="SlimeHitBox"]
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_sgy5k")

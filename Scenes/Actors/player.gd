@@ -4,11 +4,14 @@ class_name Player
 
 signal healthChanged
 
+@export var knockbackPower = 500
 @export var speed: float = 100
 @onready var animation = $AnimationPlayer
 
 @export var maxHearts: int = 3
-@onready var currentHealth: int = maxHearts * 4
+var maxHealth: int = maxHearts * 4
+@onready var currentHealth: int = maxHealth
+var healthRegained: bool = false
 
 
 func _ready():
@@ -37,6 +40,17 @@ func _physics_process(_delta):
 
 
 func _on_hurt_box_area_entered(area):
-	if area.get_parent().is_in_group("Slime"):
+	if area.name == "SlimeHitBox":
 		currentHealth -= 1
-		healthChanged.emit(currentHealth)
+		healthRegained = false
+		if currentHealth < 0:
+			currentHealth = maxHealth
+			healthRegained = true
+		healthChanged.emit(currentHealth, healthRegained)
+		knockback(area.get_parent().velocity)
+
+
+func knockback(enemyVelocity: Vector2):
+	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
+	velocity = knockbackDirection
+	move_and_slide()

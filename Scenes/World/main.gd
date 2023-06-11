@@ -7,5 +7,5 @@ extends Node2D
 
 func _ready():
 	heartGUI.setMaxHearts(player.maxHearts)
-	heartGUI.updateHearts(player.currentHealth)
+	heartGUI.updateHearts(player.currentHealth, false)
 	player.healthChanged.connect(heartGUI.updateHearts)
