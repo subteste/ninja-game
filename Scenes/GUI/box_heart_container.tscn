@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c0t5afpdnf6w2"]
+
+[node name="BoxHeartContainer" type="HBoxContainer"]
+theme_override_constants/separation = 3

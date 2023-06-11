@@ -34,8 +34,9 @@ func updateAnimation():
 		elif velocity.x > 0: walk = 'Right'
 		elif velocity.x < 0: walk = 'Left'
 		animation.play('walk' + walk)
-	
-func _physics_process(delta):
+
+
+func _physics_process(_delta):
 	updateVelocity()
 	move_and_slide()
 	updateAnimation()

@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
-@export var speed := 100
+class_name Player
+
+@export var speed: float = 100
 @onready var animation = $AnimationPlayer
+
+@export var maxHearts: int = 3
+@onready var currentHealth: int = maxHearts
+
 
 func _ready():
 	$Sprite2D.set_frame_coords(Vector2i(0, 0))
@@ -30,4 +36,6 @@ func _physics_process(_delta):
 
 func _on_hurt_box_area_entered(area):
 	if area.name == "HitBox":
-		print(area.get_parent().name, " has minus 1 life.")
+		currentHealth -= 1
+		if currentHealth < 0:
+			currentHealth = maxHearts
