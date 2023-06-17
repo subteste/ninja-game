@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c175anle3xmwi"]
+[gd_scene load_steps=15 format=3 uid="uid://c175anle3xmwi"]
 
 [ext_resource type="Texture2D" uid="uid://0smp7hljnsel" path="res://NinjaAdventure/Actor/Characters/BlueNinja/SpriteSheet.png" id="1_ehj75"]
 [ext_resource type="Script" path="res://Scenes/Actors/player.gd" id="1_q8m14"]
@@ -15,7 +15,131 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 0)]
+"values": [Vector2i(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_3v1t5"]
+resource_name = "attackDown"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_lrp8f"]
+resource_name = "attackLeft"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_4xxsn"]
+resource_name = "attackRight"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_xvn56"]
+resource_name = "attackUp"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -16)]
 }
 
 [sub_resource type="Animation" id="Animation_1rq2q"]
@@ -89,6 +213,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8g5kv"]
 _data = {
 "RESET": SubResource("Animation_3os2j"),
+"attackDown": SubResource("Animation_3v1t5"),
+"attackLeft": SubResource("Animation_lrp8f"),
+"attackRight": SubResource("Animation_4xxsn"),
+"attackUp": SubResource("Animation_xvn56"),
 "walkDown": SubResource("Animation_1rq2q"),
 "walkLeft": SubResource("Animation_476l6"),
 "walkRight": SubResource("Animation_jhsrj"),
@@ -116,8 +244,10 @@ position = Vector2(0, -8)
 texture = ExtResource("1_ehj75")
 hframes = 4
 vframes = 7
+frame = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_inlc0")
 
@@ -127,5 +257,12 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_ga5jp")
+
+[node name="Hand" type="Marker2D" parent="."]
+position = Vector2(-3, -16)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

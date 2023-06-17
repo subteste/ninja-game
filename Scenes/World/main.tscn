@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds8x8h3dml8hg"]
+[gd_scene load_steps=15 format=3 uid="uid://ds8x8h3dml8hg"]
 
 [ext_resource type="Texture2D" uid="uid://b333xutp3gfck" path="res://NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="1_fu456"]
 [ext_resource type="Script" path="res://Scenes/World/main.gd" id="1_qceei"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhgjctd2pxlr7" path="res://Scenes/Actors/Enemies/slime.tscn" id="7_7i8t7"]
 [ext_resource type="PackedScene" uid="uid://c0t5afpdnf6w2" path="res://Scenes/GUI/box_heart_container.tscn" id="8_b162a"]
 [ext_resource type="Script" path="res://Scenes/GUI/box_heart_container.gd" id="9_40xie"]
+[ext_resource type="PackedScene" uid="uid://btadwxctre65f" path="res://Scenes/weapons/sword.tscn" id="10_m27fl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bexax"]
 texture = ExtResource("1_fu456")
@@ -2811,7 +2812,7 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("3_k2icx")]
 position = Vector2(175, 114)
-knockbackPower = 800
+knockbackPower = 1000
 speed = 65.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
@@ -2846,3 +2847,6 @@ position = Vector2(44, 91)
 
 [node name="BoxHeartContainer" parent="CanvasLayer" instance=ExtResource("8_b162a")]
 script = ExtResource("9_40xie")
+
+[node name="Sword" parent="." instance=ExtResource("10_m27fl")]
+position = Vector2(475, 156)
