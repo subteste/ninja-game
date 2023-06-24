@@ -1,1 +1,4 @@
-extends Node2D
+extends Weapon
+
+func _ready():
+ pass

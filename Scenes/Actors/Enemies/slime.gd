@@ -41,3 +41,8 @@ func _physics_process(_delta):
 	updateVelocity()
 	move_and_slide()
 	updateAnimation()
+
+
+func _on_slime_hit_box_area_entered(area):
+	if area.name == "SwordHitbox":
+		queue_free()

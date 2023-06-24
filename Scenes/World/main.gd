@@ -10,3 +10,6 @@ func _ready():
 	heartGUI.setMaxHearts(player.maxHearts)
 	heartGUI.updateHearts(player.currentHealth, false)
 	player.healthChanged.connect(heartGUI.updateHearts)
+
+func _physics_process(delta):
+	pass

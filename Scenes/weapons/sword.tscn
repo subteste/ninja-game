@@ -7,13 +7,15 @@
 size = Vector2(5, 8)
 
 [node name="Sword" type="Node2D"]
+z_index = 1
 script = ExtResource("1_e8wvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
 texture = ExtResource("1_jcbbk")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[node name="SwordHitbox" type="Area2D" parent="Sprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordHitbox"]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_2p72y")

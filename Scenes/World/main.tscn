@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dhgjctd2pxlr7" path="res://Scenes/Actors/Enemies/slime.tscn" id="7_7i8t7"]
 [ext_resource type="PackedScene" uid="uid://c0t5afpdnf6w2" path="res://Scenes/GUI/box_heart_container.tscn" id="8_b162a"]
 [ext_resource type="Script" path="res://Scenes/GUI/box_heart_container.gd" id="9_40xie"]
-[ext_resource type="PackedScene" uid="uid://btadwxctre65f" path="res://Scenes/weapons/sword.tscn" id="10_m27fl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bexax"]
 texture = ExtResource("1_fu456")
@@ -2777,6 +2776,11 @@ sources/0 = SubResource("TileSetAtlasSource_bexax")
 sources/1 = SubResource("TileSetAtlasSource_36l3l")
 sources/5 = SubResource("TileSetAtlasSource_wjat8")
 
+[sub_resource type="Curve" id="Curve_7k11q"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 121.472, 0, 0, Vector2(1, 100), 354.136, nan, 0, 1]
+point_count = 2
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_qceei")
@@ -2814,6 +2818,7 @@ layer_3/tile_data = PackedInt32Array()
 position = Vector2(175, 114)
 knockbackPower = 1000
 speed = 65.0
+metadata/ss = SubResource("Curve_7k11q")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../PlayerCam")
@@ -2834,7 +2839,7 @@ motion_mode = 1
 endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Slime"]
-position = Vector2(44, 23)
+position = Vector2(52, 31)
 
 [node name="Slime2" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_7i8t7")]
 position = Vector2(473, 82)
@@ -2843,10 +2848,28 @@ endPoint = NodePath("Marker2D")
 [node name="Marker2D" type="Marker2D" parent="Slime2"]
 position = Vector2(44, 91)
 
+[node name="Slime3" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_7i8t7")]
+position = Vector2(52, 300)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime3"]
+position = Vector2(20, 102)
+
+[node name="Slime4" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_7i8t7")]
+position = Vector2(390, 290)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime4"]
+position = Vector2(-95, 85)
+
+[node name="Slime5" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_7i8t7")]
+position = Vector2(632, 259)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime5"]
+position = Vector2(5, 125)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BoxHeartContainer" parent="CanvasLayer" instance=ExtResource("8_b162a")]
 script = ExtResource("9_40xie")
-
-[node name="Sword" parent="." instance=ExtResource("10_m27fl")]
-position = Vector2(475, 156)
